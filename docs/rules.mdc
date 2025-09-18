@@ -1,0 +1,122 @@
+---
+alwaysApply: false
+---
+## 🧠 AI Collaboration Guidelines  
+
+### 🔹 General  
+- AI is an **assistant, not an autopilot**.  
+- Every AI-generated artifact must be:  
+  - **Reviewed** by a human before commit.  
+  - **Labeled** in commits or PRs (e.g., `feat(ai): scaffold task model`).  
+
+---
+
+### 🔹 AI Workflows  
+
+1. **Code Scaffolding**  
+   - Use Cursor or CodeRabbit to generate boilerplate:  
+     - Express routes & controllers  
+     - React components (task cards, milestone tracker)  
+     - Utility functions for LLM task breakdown & speech-to-text  
+
+2. **Testing**  
+   - AI generates **unit + integration tests**.  
+   - Tests must include edge cases (e.g., missing fields, invalid audio input).  
+   - Prompt AI with **Context7 MCP** (file tree + diffs) to align tests with existing code.  
+
+3. **Documentation**  
+   - Inline comments & docstrings generated via AI.  
+   - AI used to maintain **README.md** (features, setup, usage).  
+   - Reflection prompts assisted by AI but edited manually.  
+
+4. **Schema & API Awareness**  
+   - **Supabase MCP** provides live database schema.  
+   - **Context7 MCP** provides file tree + OpenAPI spec context.  
+   - AI generates:  
+     - API client hooks (React + Axios)  
+     - ORM queries aligned with schema  
+     - CRUD route handlers validated against DB structure  
+
+5. **Code Review & PRs**  
+   - Use CodeRabbit for AI-powered reviews.  
+   - Reviews focus on:  
+     - Security & validation  
+     - DB query correctness  
+     - Error handling  
+   - PR summaries can be AI-generated.  
+
+6. **Commits**  
+   - Frequent, focused commits.  
+   - Use AI-generated commit messages (from diffs).  
+   - Format:  
+     - `feat(ai): add milestone breakdown route`  
+     - `test(ai): generate integration tests for /tasks`  
+     - `docs(ai): update README with setup instructions`  
+
+---
+
+## 🛠 MCP Servers  
+
+- **Context7 MCP**  
+  - Provides: file trees, code snippets, diffs.  
+  - Usage: AI prompts always include file context to avoid hallucination.  
+
+- **Supabase MCP**  
+  - Provides: schema access + SQL queries.  
+  - Usage: AI generates models, migrations, and queries consistent with DB.  
+
+---
+
+## ✅ Deliverables Alignment  
+
+This project must include:  
+
+- **Repo Structure:**  
+  ```
+  /src
+    /api
+    /components
+    /db
+  /docs
+    README.md
+    rules.mdc
+    reflection.md
+  ```  
+
+- **README.md** → Setup, usage, features, AI integration notes.  
+- **reflection.md** → 500-word reflection on AI usage.  
+- **rules.mdc** → This file.  
+- **Functional Codebase** → With implemented features + tests.  
+- **Commit History** → Clear, labeled, showing AI usage.  
+
+---
+
+## 🧩 Prompting Strategy  
+
+Sample prompts to use with AI:  
+
+- **Code Scaffolding**  
+  > "Using Context7 MCP, scaffold an Express route for `/tasks`. Fields: `id`, `title`, `description`, `created_at`, `milestones[]`. Validate against Supabase schema."  
+
+- **Testing**  
+  > "Generate Jest tests for `/tasks` route. Cover: valid task creation, missing fields, invalid milestones. Use Supabase schema for validation."  
+
+- **Documentation**  
+  > "Update README with setup steps for Render deployment, Supabase connection, and speech-to-text API config. Keep it concise and clear."  
+
+- **Commit Messages**  
+  > "Generate a commit message based on this diff. Use conventional commits format and label AI contributions."  
+
+---
+
+## 🔍 Reflection Prompts  
+
+Before final submission, answer with AI-assisted drafts, then refine manually:  
+- How did AI accelerate scaffolding?  
+- Which AI-generated code/tests needed the most correction?  
+- How did MCP servers improve context accuracy?  
+- What prompting strategies worked best?  
+
+---
+
+📌 This `rules.mdc` is part of the Capstone deliverables and must be followed throughout the build.  
